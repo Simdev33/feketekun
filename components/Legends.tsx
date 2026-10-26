@@ -87,7 +87,7 @@ export default function Legends() {
 
         <div
           ref={row}
-          className="no-scrollbar relative mt-12 flex min-w-0 flex-1 cursor-grab gap-6 overflow-x-auto overscroll-x-contain px-5 pb-4 select-none active:cursor-grabbing sm:px-8 lg:mt-0 lg:pl-2 lg:pr-[6vw] lg:[mask-image:linear-gradient(to_right,transparent,#000_3%)]"
+          className="no-scrollbar relative mt-12 flex min-w-0 flex-1 cursor-grab gap-6 overflow-x-auto overflow-y-hidden overscroll-x-contain px-5 pb-4 select-none active:cursor-grabbing sm:px-8 lg:mt-0 lg:pl-2 lg:pr-[6vw] lg:[mask-image:linear-gradient(to_right,transparent,#000_3%)]"
           onPointerDown={(e) => {
             if (e.pointerType !== "mouse") return;
             drag.current = { down: true, x: e.clientX, left: row.current!.scrollLeft, moved: false };
