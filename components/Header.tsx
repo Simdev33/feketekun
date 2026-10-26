@@ -36,9 +36,9 @@ export default function Header() {
             <span className="relative block h-11 w-11 shrink-0 transition-transform duration-700 group-hover:rotate-[360deg]">
               <Image src="/img/logo.png" alt="" fill sizes="44px" className="rounded-full" priority />
             </span>
-            <span className="hidden font-display text-[15px] font-bold leading-none tracking-[0.12em] text-gold-200 sm:block">
+            <span className="block font-display text-[13px] font-bold leading-none tracking-[0.1em] text-gold-200 sm:text-[15px] sm:tracking-[0.12em]">
               FEKETE KUN
-              <span className="mt-1 block text-[10px] tracking-[0.42em] text-bone/55">FALATOZÓ</span>
+              <span className="mt-1 block text-[9px] tracking-[0.38em] text-bone/55 sm:text-[10px] sm:tracking-[0.42em]">FALATOZÓ</span>
             </span>
           </a>
 

@@ -51,7 +51,7 @@ export default function Footer() {
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-wrap justify-between gap-3 border-t border-gold-400/10 px-5 pt-6 text-xs text-bone/35 sm:px-8">
         <p>© {new Date().getFullYear()} {site.name}. Minden jog fenntartva.</p>
-        <p>A plakátokon szereplő ételfotók illusztrációk.</p>
+        <p>Az ételfotók saját fotóink — nem illusztrációk.</p>
       </div>
     </footer>
   );

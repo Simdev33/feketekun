@@ -50,6 +50,8 @@
     color-scheme: dark;
   }
   body {
+    /* semmi ne tolhassa szélesebbre az oldalt (mobilon ettől mozdulnának a fix sávok) */
+    overflow-x: clip;
     background: var(--color-ink-950);
     color: var(--color-bone);
     font-family: var(--font-sans);

@@ -17,7 +17,7 @@ export default function Menu() {
   const cat = menu.find((c) => c.id === active)!;
 
   return (
-    <section id="etlap" className="relative scroll-mt-24 py-24 sm:py-32">
+    <section id="etlap" className="relative scroll-mt-24 overflow-x-clip py-24 sm:py-32">
       <div aria-hidden className="pattern-bg absolute inset-0 opacity-[0.025] [mask-image:linear-gradient(to_bottom,transparent,#000_20%,#000_80%,transparent)]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHead
@@ -114,9 +114,9 @@ export default function Menu() {
                     className="group relative py-5 first:pt-0"
                     variants={{ hidden: { opacity: 0, x: 30, filter: "blur(6px)" }, show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.6, ease } } }}
                   >
-                    <span aria-hidden className="absolute -left-4 top-1/2 hidden h-0 w-0.5 -translate-y-1/2 bg-blood-500 transition-all duration-300 group-hover:h-2/3 lg:block" />
+                    <span aria-hidden className="absolute -left-3 top-1/2 h-2/3 w-0.5 -translate-y-1/2 bg-blood-500 transition-all duration-300 group-hover:h-2/3 lg:-left-4 lg:h-0" />
                     <div className="flex items-baseline gap-3">
-                      <h4 className="font-serif text-2xl font-bold text-bone transition-colors group-hover:text-gold-200">
+                      <h4 className="font-serif text-2xl font-bold text-gold-200 transition-colors group-hover:text-gold-200 lg:text-bone">
                         {it.name}
                         {it.unit && <span className="ml-2 font-sans text-sm font-semibold text-bone/50">{it.unit}</span>}
                       </h4>
@@ -126,7 +126,7 @@ export default function Menu() {
                         </span>
                       )}
                       <span className="dotted-leader" />
-                      <span className="whitespace-nowrap rounded-lg border border-gold-400/30 bg-ink-900 px-3 py-1 font-display text-lg font-bold text-gold-200 shadow-[inset_0_1px_0_rgba(251,240,214,0.08)] transition group-hover:border-gold-300 group-hover:bg-blood-800">
+                      <span className="whitespace-nowrap rounded-lg border border-gold-300 bg-blood-800 px-3 py-1 font-display text-lg font-bold text-gold-200 shadow-[inset_0_1px_0_rgba(251,240,214,0.08)] transition group-hover:border-gold-300 group-hover:bg-blood-800 lg:border-gold-400/30 lg:bg-ink-900">
                         {it.priceLabel ?? ft(it.price)}
                       </span>
                     </div>
