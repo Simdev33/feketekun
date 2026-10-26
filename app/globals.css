@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #070505;
+  --color-ink-900: #0d0908;
+  --color-ink-850: #130d0b;
+  --color-ink-800: #1a120f;
+  --color-ink-700: #261a15;
+  --color-ink-600: #3a2820;
+
+  --color-blood-900: #3d0a0c;
+  --color-blood-800: #5c0d10;
+  --color-blood-700: #7c1115;
+  --color-blood-600: #9c171b;
+  --color-blood-500: #c0221f;
+
+  --color-gold-100: #fbf0d6;
+  --color-gold-200: #f3dca6;
+  --color-gold-300: #e8c27a;
+  --color-gold-400: #d9a95b;
+  --color-gold-500: #b98a3e;
+  --color-gold-600: #8f6527;
+
+  --color-bone: #efe3cc;
+  --color-ember: #ff7a2a;
+
+  --font-display: var(--font-cinzel), "Times New Roman", serif;
+  --font-serif: var(--font-alegreya), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-spin-slow: spin 28s linear infinite;
+  --animate-flicker: flicker 3.2s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 0.85; }
+    40% { opacity: 1; }
+    55% { opacity: 0.7; }
+    70% { opacity: 0.95; }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-ink-950);
+    color-scheme: dark;
+  }
+  body {
+    background: var(--color-ink-950);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-blood-600);
+    color: var(--color-gold-100);
+  }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: hidden; }
+}
+
+@layer components {
+  /* Aranyfüst-betű: a plakátok fémes felirata */
+  .gold-text {
+    background: linear-gradient(180deg, #fff3d4 0%, #f0cf8a 38%, #c99447 62%, #f3d699 82%, #9c6b2a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gold-text-flat {
+    background: linear-gradient(100deg, #e8c27a, #fbf0d6 45%, #d9a95b 70%, #f3dca6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-gold-400);
+  }
+
+  /* Díszes keretes panel: sötét kártya aranyos hajszálkerettel és belső fénnyel */
+  .panel {
+    position: relative;
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(156, 23, 27, 0.16), transparent 60%),
+      linear-gradient(180deg, #1a120f, #0f0a09);
+    border: 1px solid rgba(217, 169, 91, 0.22);
+    box-shadow:
+      inset 0 1px 0 rgba(251, 240, 214, 0.06),
+      0 30px 60px -30px rgba(0, 0, 0, 0.9);
+  }
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(217, 169, 91, 0.1);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Ecsetvonás-szalag a plakátok piros címsávja nyomán */
+  .brush {
+    position: relative;
+    isolation: isolate;
+  }
+  .brush::before {
+    content: "";
+    position: absolute;
+    inset: 8% -6%;
+    z-index: -1;
+    background: linear-gradient(90deg, transparent, rgba(156, 23, 27, 0.92) 8%, #7c1115 50%, rgba(156, 23, 27, 0.92) 92%, transparent);
+    mask: url("/img/brush.svg") center / 100% 100% no-repeat;
+    -webkit-mask: url("/img/brush.svg") center / 100% 100% no-repeat;
+  }
+
+  /* Égetett pergamen címke az étlap-plakát kategóriacímei nyomán */
+  .parchment {
+    background:
+      radial-gradient(circle at 22% 35%, rgba(255, 214, 170, 0.35), transparent 30%),
+      radial-gradient(circle at 78% 70%, rgba(110, 42, 25, 0.35), transparent 35%),
+      radial-gradient(ellipse 70% 90% at 50% 50%, #f7b487 0%, #e2925f 38%, #c76a37 70%, #8e3a17 92%, #5e2210 100%);
+    box-shadow:
+      inset 0 0 10px rgba(60, 14, 4, 0.75),
+      0 8px 22px -8px rgba(199, 106, 55, 0.6);
+    mask: url("/img/tag.svg") center / 100% 100% no-repeat;
+    -webkit-mask: url("/img/tag.svg") center / 100% 100% no-repeat;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    padding: 0.95rem 1.6rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+    white-space: nowrap;
+  }
+  .btn-gold {
+    color: #1a0d07;
+    background: linear-gradient(180deg, #f6dc9f, #d9a95b 55%, #b98a3e);
+    box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.4) inset, 0 12px 30px -10px rgba(217, 169, 91, 0.55);
+  }
+  .btn-gold:hover {
+    box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.6) inset, 0 18px 40px -10px rgba(255, 170, 70, 0.75);
+  }
+  .btn-ghost {
+    color: var(--color-gold-200);
+    border: 1px solid rgba(217, 169, 91, 0.4);
+    background: rgba(13, 9, 8, 0.4);
+    backdrop-filter: blur(6px);
+  }
+  .btn-ghost:hover {
+    background: rgba(156, 23, 27, 0.35);
+    border-color: rgba(217, 169, 91, 0.7);
+  }
+
+  /* Zaj-textúra blend nélkül (a mix-blend-mode Chrome-ban elfeketíti az oldalt) */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.09;
+    background-image: url("/img/noise.svg");
+    background-size: 220px;
+    z-index: 0;
+    /* alul elhalványul, hogy ne legyen éles határ a következő szekcióval */
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+
+  /* Kun szőttes-minta sáv */
+  .weave {
+    background-image: url("/img/weave.svg");
+    background-size: 56px 28px;
+    background-repeat: repeat-x;
+  }
+  .pattern-bg {
+    background-image: url("/img/pattern.svg");
+    background-size: 120px;
+  }
+
+  .dotted-leader {
+    flex: 1;
+    min-width: 1.5rem;
+    border-bottom: 1px dotted rgba(217, 169, 91, 0.35);
+    transform: translateY(-0.35em);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
